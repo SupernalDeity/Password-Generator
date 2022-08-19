@@ -11,9 +11,9 @@ function generatePassword() {
   var password = "";
 
   var passwordLength = parseInt(prompt("How many characters long would you like your password to be? Choose a number between 8 and 128"));
-
-  if (!passwordLength) {
-    alert('Please enter a number!');
+  
+  if (isNaN(passwordLength)) {
+    alert("Please enter a number!");
     return '';
   }
 
@@ -21,11 +21,6 @@ function generatePassword() {
     alert("Please choose a number between 8 and 128!");
     return '';
   }
-
-  // else if (typeof passwordLength !== "number") {
-  //   alert("Please enter a number!");
-  //   return '';
-  // }
 
   else {
     var hasLower = confirm('Do you want lowercase letters?');
