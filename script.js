@@ -10,15 +10,22 @@ function generatePassword() {
   var possibleChar = "";
   var password = "";
 
-  var passwordLength = prompt("How many characters long would you like your password to be? Choose a number between 8 and 128");
+  var passwordLength = parseInt(prompt("How many characters long would you like your password to be? Choose a number between 8 and 128"));
 
   if (!passwordLength) {
     alert('Please enter a number!');
+    return '';
   }
 
   else if (passwordLength < 8 || passwordLength > 128) {
     alert("Please choose a number between 8 and 128!");
+    return '';
   }
+
+  // else if (typeof passwordLength !== "number") {
+  //   alert("Please enter a number!");
+  //   return '';
+  // }
 
   else {
     var hasLower = confirm('Do you want lowercase letters?');
@@ -28,7 +35,8 @@ function generatePassword() {
   }
   
   if (!hasLower && !hasUpper && !hasSpecial && !hasNumeric) {
-    alert("Please include at least one characteristic!")
+    alert("Please include at least one characteristic!");
+    return '';
   }
 
   if (hasLower) {
