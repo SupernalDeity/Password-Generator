@@ -7,14 +7,17 @@ function generatePassword() {
   var special = '#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
   var numeric = '0123456789';
 
+  var possible = "";
+  var password = "";
+
   var passwordLength = prompt("How many characters long would you like your password to be? Choose a number between 8 and 128");
 
   if (!passwordLength) {
-    alert('Please enter a number');
+    alert('Please enter a number!');
   }
 
   else if (passwordLength < 8 || passwordLength > 128) {
-    alert("Please choose a number between 8 and 128");
+    alert("Please choose a number between 8 and 128!");
   }
 
   else {
@@ -23,12 +26,25 @@ function generatePassword() {
     var hasSpecial = confirm('Do you want special characters?');
     var hasNumeric = confirm('Do you want numbers?');
   }
+  
+  if (!hasLower && !hasUpper && !hasSpecial && !hasNumeric) {
+    alert("Please include at least one characteristic!")
+  }
 
+  if (hasLower) {
+  possible += lower;
+  }
+  if (hasUpper) {
+  possible += upper;
+  }
+  if (hasSpecial) {
+  possible += special;
+  }
+  if (hasNumeric) {
+  possible += numeric;
+  }
 
-
-  // if (hasLower) {
-  // possible += lower;
-  // }
+  
 
 }
 
