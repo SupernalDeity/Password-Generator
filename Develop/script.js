@@ -2,12 +2,12 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() { 
-  var lower = 'abcdefghijklmnopqrstuvwxyz';
-  var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var special = '#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
-  var numeric = '0123456789';
+  var lower = "abcdefghijklmnopqrstuvwxyz";
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var special = "#$%&\'()*+,-./:;<=>?@[]^_`{|}~";
+  var numeric = "0123456789";
 
-  var possible = "";
+  var possibleChar = "";
   var password = "";
 
   var passwordLength = prompt("How many characters long would you like your password to be? Choose a number between 8 and 128");
@@ -15,7 +15,7 @@ function generatePassword() {
   if (!passwordLength) {
     alert('Please enter a number!');
   }
-
+  
   else if (passwordLength < 8 || passwordLength > 128) {
     alert("Please choose a number between 8 and 128!");
   }
@@ -32,25 +32,24 @@ function generatePassword() {
   }
 
   if (hasLower) {
-  possible += lower;
+  possibleChar += lower;
   }
   if (hasUpper) {
-  possible += upper;
+  possibleChar += upper;
   }
   if (hasSpecial) {
-  possible += special;
+  possibleChar += special;
   }
   if (hasNumeric) {
-  possible += numeric;
+  possibleChar += numeric;
   }
 
-  
+  for (var i = 0; i < passwordLength; i++) {
+    password += possibleChar.charAt(Math.floor(Math.random() * possibleChar.length));
+  }
 
+  return password;
 }
-
-
-
-
 
 // Write password to the #password input
 function writePassword() {
